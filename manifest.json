@@ -11,10 +11,6 @@
     {
       "matches": ["*://www.youtube.com/*", "*://studio.youtube.com/channel/*"],
       "js": ["content.js"]
-    },
-    {
-      "matches": ["*://studio.youtube.com/channel/*"],
-      "js": ["hide_dashboard.js"]
     }
   ],
   "browser_action": {

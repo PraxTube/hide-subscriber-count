@@ -1,29 +1,47 @@
-// Hide subscriber count
 function hideSubs() {
-  const subscriberCountElements = document.querySelectorAll(
-    'yt-formatted-string',
-  );
-  subscriberCountElements.forEach((element) => {
-    if (element.textContent.includes("subscriber")) {
-      element.style.display = "none";
-    } else {
-      console.log("No subs hidden");
-    }
-  });
+  const elementsToHide = [
+    '#subscriber-count',
+    '#owner-sub-count',
+    '#page-header > yt-page-header-renderer > yt-page-header-view-model > div > div.page-header-view-model-wiz__page-header-headline > div > yt-content-metadata-view-model > div:nth-child(3) > span:nth-child(1)',
+    '#video-count',
+  ]
+  elementsToHide.forEach((elementString) => {
+    const element = document.querySelector(elementString);
+    if (element) {
+      element.style.display = 'none';
+    };
+  })
 }
 
-// Function to be called when new elements are added to the page
-function handleNewElements(mutationsList, observer) {
+function hideDashboard() {
+  const elementsToHide = [
+    '#menu-paper-icon-item-0',
+    '#menu-paper-icon-item-1',
+    '#menu-paper-icon-item-2',
+    '#menu-paper-icon-item-4',
+    '#menu-paper-icon-item-5',
+    '#menu-paper-icon-item-6',
+    '#menu-paper-icon-item-8',
+    '#channel-dashboard-section > div.main.style-scope.ytcd-channel-dashboard',
+  ]
+  elementsToHide.forEach((elementString) => {
+    const element = document.querySelector(elementString);
+    if (element) {
+      element.style.display = 'none';
+    }
+  })
+}
+
+function hideSubsInNewElements(mutationsList, _observer) {
+  hideSubs();
+  hideDashboard();
   mutationsList.forEach((mutation) => {
     if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
       mutation.addedNodes.forEach((node) => {
         if (node.nodeName === 'YT-FORMATTED-STRING') {
           if (node.textContent.includes("subscriber")) {
             node.style.display = "none";
-            console.log("Subscriber count hidden:", node.textContent);
-          } else {
-            console.log("No subs hidden in the newly added node");
-          }
+          };
         }
       });
     }
@@ -31,12 +49,12 @@ function handleNewElements(mutationsList, observer) {
 }
 
 // Create a new MutationObserver instance
-const observer = new MutationObserver(handleNewElements);
-
+const observer = new MutationObserver(hideSubsInNewElements);
 // Start observing changes to the DOM
 observer.observe(document.body, { childList: true, subtree: true });
-//
-// // Run the function when the page has fully loaded
-// window.onload = function() {
-//   hideSubs();
-// };
+
+// Run the function when the page has fully loaded
+window.onload = function() {
+  hideSubs();
+  hideDashboard();
+};
