@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Hide YouTube Subscribers",
+  "version": "1.0",
+  "description": "Hide subscriber count on YouTube channels.",
+  "permissions": [
+    "https://www.youtube.com/*",
+    "https://studio.youtube.com/channel/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*", "*://studio.youtube.com/channel/*"],
+      "js": ["content.js"]
+    },
+    {
+      "matches": ["*://studio.youtube.com/channel/*"],
+      "js": ["hide_dashboard.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
