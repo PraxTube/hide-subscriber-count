@@ -1,0 +1,56 @@
+/* Hide views */
+.view-count {
+    display: none!important;
+}
+#metadata-line > span:nth-child(1) {
+    display: none!important;
+}
+#metadata-line > span:nth-child(3) {
+    display: none!important;
+}
+#info > span:nth-child(1) {
+    display: none!important;
+}
+
+/* Hide subs */
+#owner-sub-count {
+    display: none!important;
+}
+#subscriber-count {
+    display: none!important;
+}
+#video-count {
+    display: none!important;
+}
+#page-header > yt-page-header-renderer > yt-page-header-view-model > div > div.page-header-view-model-wiz__page-header-headline > div > yt-content-metadata-view-model > div:nth-child(3) > span:nth-child(1) {
+    display: none!important;
+}
+
+/* Hide Dashboard elements */
+#menu-paper-icon-item-0 {
+    display: none!important;
+}
+#menu-paper-icon-item-1 {
+    display: none!important;
+}
+#menu-paper-icon-item-2 {
+    display: none!important;
+}
+#menu-paper-icon-item-4 {
+    display: none!important;
+}
+#menu-paper-icon-item-5 {
+    display: none!important;
+}
+#menu-paper-icon-item-6 {
+    display: none!important;
+}
+#menu-paper-icon-item-8 {
+    display: none!important;
+}
+#menu-paper-icon-item-0 {
+    display: none!important;
+}
+#channel-dashboard-section > div.main.style-scope.ytcd-channel-dashboard {
+    display: none!important;
+}
