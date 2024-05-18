@@ -25,6 +25,12 @@
 #page-header > yt-page-header-renderer > yt-page-header-view-model > div > div.page-header-view-model-wiz__page-header-headline > div > yt-content-metadata-view-model > div:nth-child(3) > span:nth-child(1) {
     display: none!important;
 }
+#subtitle {
+    display: none!important;
+}
+#additional-info-container > table > tbody > tr:nth-child(4) > td:nth-child(2) {
+    display: none!important;
+}
 
 /* Hide Dashboard elements */
 #menu-paper-icon-item-0 {
