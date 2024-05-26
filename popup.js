@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const toggle = document.getElementById('toggle');
-  if (!toggle) {
+  const likeToggle = document.getElementById('hide-likes');
+  if (!likeToggle) {
     return
   }
 
-  chrome.storage.sync.get(['toggleState'], function(result) {
-    toggle.checked = result.toggleState || false;
+  chrome.storage.sync.get(['hideLikes'], function(result) {
+    likeToggle.checked = result.hideLikes || false;
   });
 
-  toggle.addEventListener('change', function() {
-    chrome.storage.sync.set({ toggleState: toggle.checked }, function() {
+  likeToggle.addEventListener('change', function() {
+    chrome.storage.sync.set({ hideLikes: likeToggle.checked }, function() {
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {
-          action: 'toggleElement',
-          hide: toggle.checked
+          action: 'toggleLikes',
+          hide: likeToggle.checked
         }, function(response) {
           if (response.status === 'success') {
             console.log('Element visibility toggled');

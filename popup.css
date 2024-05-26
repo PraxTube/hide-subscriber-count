@@ -4,7 +4,7 @@ body {
     padding: 20px;
 }
 
-.toggle-switch {
+.hide-likes-switch {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,10 +12,13 @@ body {
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 34px;
-    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.switch-text {
+    margin-right: 10px; /* Add some space between the text and the slider */
+    font-size: 15px;
 }
 
 .switch input {
@@ -25,12 +28,10 @@ body {
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
     background-color: #ccc;
     transition: .4s;
     border-radius: 34px;

@@ -22,36 +22,33 @@ const observer = new MutationObserver(newElementsAdded);
 // Start observing changes to the DOM
 observer.observe(document.body, { childList: true, subtree: true });
 
-// Function to toggle element visibility based on the state
-function toggleElementVisibility(isHidden) {
+function toggleLikesVisibility(isHidden) {
   const element = document.querySelector('#top-level-buttons-computed > segmented-like-dislike-button-view-model');
   if (element) {
     element.style.display = isHidden ? 'none' : '';
     return true;
   } else {
-    console.warn('like/dislike element not found');
     return false;
   }
 }
 
-// Listen for messages from the popup to toggle the element
 chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
-  if (request.action === 'toggleElement') {
-    toggleElementVisibility(request.hide);
+  if (request.action === 'toggleLikes') {
+    toggleLikesVisibility(request.hide);
     sendResponse({status: 'success'});
   }
 });
 
-let initial_toggle_complete = false;
+let initial_like_toggle = false;
 function checkLikeState() {
-  if (initial_toggle_complete) {
+  if (initial_like_toggle) {
     return
   }
 
-  chrome.storage.sync.get(['toggleState'], function(result) {
-    const isHidden = result.toggleState || false;
-    if (toggleElementVisibility(isHidden)) {
-      initial_toggle_complete = true;
+  chrome.storage.sync.get(['hideLikes'], function(result) {
+    const isHidden = result.hideLikes || false;
+    if (toggleLikesVisibility(isHidden)) {
+      initial_like_toggle = true;
     }
   });
 }
