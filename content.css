@@ -32,6 +32,11 @@
     display: none!important;
 }
 
+/* /* Hide like/dislike */ */
+/* #top-level-buttons-computed > segmented-like-dislike-button-view-model { */
+/*   display: none!important; */
+/* } */
+
 /* Hide Dashboard elements */
 #menu-paper-icon-item-0 {
     display: none!important;

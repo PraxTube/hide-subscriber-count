@@ -5,7 +5,9 @@
   "description": "Hide subscriber count on YouTube channels.",
   "permissions": [
     "https://www.youtube.com/*",
-    "https://studio.youtube.com/*"
+    "https://studio.youtube.com/*",
+    "activeTab",
+    "storage"
   ],
   "content_scripts": [
     {
@@ -15,6 +17,7 @@
     }
   ],
   "browser_action": {
+    "default_popup": "popup.html",
     "default_icon": "icon.png"
   },
   "icons": {
