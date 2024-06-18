@@ -26,9 +26,6 @@ function toggleLikesVisibility(isHidden) {
   const element = document.querySelector('#top-level-buttons-computed > segmented-like-dislike-button-view-model');
   if (element) {
     element.style.display = isHidden ? 'none' : '';
-    return true;
-  } else {
-    return false;
   }
 }
 
@@ -39,16 +36,12 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   }
 });
 
-let initial_like_toggle = false;
 function checkLikeState() {
-  if (initial_like_toggle) {
-    return
-  }
-
   chrome.storage.sync.get(['hideLikes'], function(result) {
-    const isHidden = result.hideLikes || false;
-    if (toggleLikesVisibility(isHidden)) {
-      initial_like_toggle = true;
+    const isHidden = result.hideLikes;
+    if (isHidden == null) {
+      return
     }
+    toggleLikesVisibility(isHidden);
   });
 }
